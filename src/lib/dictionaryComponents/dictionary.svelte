@@ -1,17 +1,11 @@
-<script lang="ts">
+<script>
   import Results from "./results.svelte";
   import { fetchWordData } from "../utils.js";
 
-  let loading: boolean = false;
+  let loading = false;
+  let name = "word";
 
-  let name: string = "word";
-  let wordData: {
-    word: string;
-    phonetic: string;
-    audio: string;
-    examples: string[];
-    partOfSpeeches: { partOfSpeech: string; definitions: any[] }[];
-  } = {
+  let wordData = {
     word: "",
     phonetic: "",
     audio: "",
@@ -19,7 +13,7 @@
     partOfSpeeches: []
   };
 
-  async function setWordData(event: Event) {
+  async function setWordData(event) {
     event.preventDefault();
     loading = true;
     wordData = await fetchWordData(name);
@@ -45,16 +39,15 @@
 <br />
 
 <div id="results">
-
-    {#if loading}
-    <p>Searching for <em>${name}</em>...</p>
-    {:else}
-  <Results
-    word={wordData.word}
-    phonetic={wordData.phonetic}
-    audio={wordData.audio}
-    examples={wordData.examples}
-    partOfSpeeches={wordData.partOfSpeeches}
+  {#if loading}
+    <p>Searching for <em>{name}</em>...</p>
+  {:else}
+    <Results
+      word={wordData.word}
+      phonetic={wordData.phonetic}
+      audio={wordData.audio}
+      examples={wordData.examples}
+      partOfSpeeches={wordData.partOfSpeeches}
     />
-    {/if}
+  {/if}
 </div>

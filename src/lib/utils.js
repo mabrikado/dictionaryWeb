@@ -40,4 +40,33 @@ async function fetchWordData(word) {
 	return final_data;
 }
 
-export { fetchWordData };
+
+async function fetchAntonyms(word) {
+	let antonyms = [];
+
+	try {
+		const response = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`);
+		const data = await response.json();
+
+		let new_antonyms = [];
+
+		for (let i = 0; i < data[0].meanings.length; i++) {
+			if (data[0].meanings[i].antonyms) {
+				new_antonyms.push(...data[0].meanings[i].antonyms);
+			}
+		}
+
+		antonyms = new_antonyms;
+	} catch (error) {
+		console.error("Error fetching antonyms:", error);
+		antonyms = [];
+	}
+
+	return {
+		word,
+		antonyms
+	};
+}
+
+
+export { fetchWordData, fetchAntonyms };

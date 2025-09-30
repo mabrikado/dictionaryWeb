@@ -1,6 +1,6 @@
 <script>
   import Antonyms from "./lib/antonymsComponents/antonyms.svelte";
-  import Synonyms from "./lib/synonyms.svelte";
+  import Synonyms from "./lib/synonymsComponents/synonyms.svelte";
   import Dictionary from "./lib/dictionaryComponents/dictionary.svelte";
 
   // 1. Reactive route tracking
