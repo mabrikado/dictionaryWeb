@@ -3,7 +3,8 @@
   import Results from "./results.svelte";
 
   let loading = $state(false);
-  let name = $state("word");
+  let searched = $state(false);
+  let name = $state();
   let wordData = $state({
     word: "",
     antonyms: []
@@ -14,6 +15,7 @@
     loading = true;
     wordData = await fetchAntonyms(name);
     loading = false;
+    searched = true;
   }
 </script>
 
@@ -27,7 +29,7 @@
     id="lookup"
     type="text"
     required
-    on:input={() => console.log(name)}
+    on:input={() => searched = false}
   />
   <input name="submit" type="submit" value="Search" />
 </form>
@@ -38,6 +40,6 @@
   {#if loading}
     <p>Searching for <em>{name}</em>...</p>
   {:else}
-    <Results word={wordData.word} antonyms={wordData.antonyms} />
+    <Results word={(wordData.word) ? wordData.word : name } antonyms={wordData.antonyms} {searched} />
   {/if}
 </div>

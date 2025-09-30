@@ -99,6 +99,7 @@ nav a:focus {
     border-radius: 12px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
     transition: background-color 0.3s ease;
+    box-sizing: border-box; /* Added to ensure padding/borders are contained */
 }
 
 h1, h2, h3, h4 {
@@ -121,6 +122,8 @@ form {
     display: flex;
     gap: 0.75rem;
     margin-bottom: var(--spacing);
+    width: 100%;
+    box-sizing: border-box; /* ensure form width includes padding */
 }
 
 input[type="text"] {
@@ -130,8 +133,10 @@ input[type="text"] {
     border: 1px solid var(--border-color);
     border-radius: var(--radius);
     background-color: var(--input-bg);
-    color: var(--text-main);
+    color: #000000; /* Pure black input text */
     transition: border-color 0.3s ease;
+    box-sizing: border-box; /* includes padding/border in width */
+    max-width: 100%; /* prevent overflow */
 }
 
 input[type="text"]:focus {
@@ -150,6 +155,7 @@ input[type="submit"] {
     border-radius: var(--radius);
     cursor: pointer;
     transition: background-color 0.3s ease;
+    box-sizing: border-box;
 }
 
 input[type="submit"]:hover,
@@ -201,7 +207,7 @@ audio {
     color: var(--heading);
     display: inline-block;
     margin-right: 1rem;
-}dictionaryWeb
+}
 
 #phonetic {
     font-style: italic;
@@ -232,3 +238,95 @@ p em {
     color: var(--accent);
 }
 
+@media (max-width: 600px) {
+    body {
+        padding: 0 0.75rem;
+        font-size: 0.9rem;
+    }
+
+    nav {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 1rem;
+        gap: 1rem;
+    }
+
+    nav .nav-links {
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+
+    nav a {
+        padding: 0.4rem 0.6rem;
+        font-size: 0.9rem;
+    }
+
+    #theme-toggle {
+        padding: 0.25rem 0.6rem;
+        font-size: 0.85rem;
+    }
+
+    #app {
+        margin: 1rem auto;
+        padding: 1.5rem 1rem;
+        border-radius: 10px;
+        box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+        width: 100%;
+        box-sizing: border-box; /* prevent overflow */
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    h2 {
+        font-size: 1.3rem;
+    }
+
+    h3 {
+        font-size: 1.1rem;
+    }
+
+    h4 {
+        font-size: 1rem;
+    }
+
+    form {
+        flex-direction: column;
+        gap: 0.5rem;
+        width: 100%;
+        box-sizing: border-box; /* prevent overflow */
+    }
+
+    input[type="text"], input[type="submit"] {
+        width: 100%;
+        font-size: 1rem;
+        max-width: 100%; /* prevent overflow */
+        box-sizing: border-box; /* include padding/border */
+    }
+
+    #results {
+        margin-top: 1rem;
+    }
+
+    audio {
+        max-width: 100%;
+    }
+
+    #word {
+        font-size: 1.3rem;
+        margin-bottom: 0.25rem;
+        display: block;
+    }
+
+    #phonetic {
+        font-size: 1rem;
+        margin-top: 0;
+        display: block;
+    }
+
+    .related-word {
+        font-size: 0.85rem;
+        padding: 0.3rem 0.6rem;
+    }
+}

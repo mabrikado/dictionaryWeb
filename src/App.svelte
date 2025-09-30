@@ -3,26 +3,44 @@
   import Synonyms from "./lib/synonymsComponents/synonyms.svelte";
   import Dictionary from "./lib/dictionaryComponents/dictionary.svelte";
 
-  // 1. Reactive route tracking
   let route = window.location.hash || '#/';
 
   window.addEventListener('hashchange', () => {
     route = window.location.hash;
   });
+
+  import { onMount } from "svelte";
+
+  onMount(() => {
+    const html = document.documentElement;
+    const themeToggleBtn = document.getElementById("theme-toggle");
+
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme) {
+      html.setAttribute("data-theme", savedTheme);
+    }
+
+    themeToggleBtn?.addEventListener("click", () => {
+      const currentTheme = html.getAttribute("data-theme");
+      const newTheme = currentTheme === "dark" ? "light" : "dark";
+      themeToggleBtn.textContent = (newTheme === "dark") ? "Light Mode" : "Dark Mode";
+      html.setAttribute("data-theme", newTheme);
+      localStorage.setItem("theme", newTheme);
+    });
+  });
 </script>
 
 <main>
-  <div class="nav-links">
-    <nav>
-      <!-- 2. Use hash-based hrefs -->
+  <nav>
+    <div class="nav-links" id="nav-menu">
       <a href="#/">Dictionary</a>
       <a href="#/antonyms">Antonyms</a>
       <a href="#/synonyms">Synonyms</a>
-    </nav>
-  </div>
+      <button id="theme-toggle">Toggle Theme</button>
+    </div>
+  </nav>
 
   <div>
-    <!-- 3. Render based on route -->
     {#if route === '#/'}
       <Dictionary />
     {:else if route === '#/antonyms'}
@@ -34,4 +52,3 @@
     {/if}
   </div>
 </main>
-

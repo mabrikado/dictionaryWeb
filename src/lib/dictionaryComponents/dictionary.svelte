@@ -1,11 +1,17 @@
-<script>
+<script lang="ts">
   import Results from "./results.svelte";
   import { fetchWordData } from "../utils.js";
 
-  let loading = false;
-  let name = "word";
+  let loading: boolean = false;
 
-  let wordData = {
+  let name: string = "word";
+  let wordData: {
+    word: string;
+    phonetic: string;
+    audio: string;
+    examples: string[];
+    partOfSpeeches: { partOfSpeech: string; definitions: any[] }[];
+  } = {
     word: "",
     phonetic: "",
     audio: "",
@@ -13,7 +19,7 @@
     partOfSpeeches: []
   };
 
-  async function setWordData(event) {
+  async function setWordData(event: Event) {
     event.preventDefault();
     loading = true;
     wordData = await fetchWordData(name);
@@ -31,7 +37,6 @@
     id="lookup"
     type="text"
     required
-    on:input={() => console.log(name)}
   />
   <input name="submit" type="submit" value="Search" />
 </form>
@@ -39,15 +44,18 @@
 <br />
 
 <div id="results">
-  {#if loading}
-    <p>Searching for <em>{name}</em>...</p>
-  {:else}
-    <Results
-      word={wordData.word}
-      phonetic={wordData.phonetic}
-      audio={wordData.audio}
-      examples={wordData.examples}
-      partOfSpeeches={wordData.partOfSpeeches}
+
+    {#if loading}
+    <p>Searching for <em>${name}</em>...</p>
+    {:else if wordData.error && name}
+    <p>Could not find word for {name}</p>
+    {:else}
+  <Results
+    word={wordData.word}
+    phonetic={wordData.phonetic}
+    audio={wordData.audio}
+    examples={wordData.examples}
+    partOfSpeeches={wordData.partOfSpeeches}
     />
-  {/if}
+    {/if}
 </div>

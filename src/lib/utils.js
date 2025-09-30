@@ -34,7 +34,7 @@ async function fetchWordData(word) {
 		};
 	} catch (error) {
 		console.error("Error fetching word data:", error);
-		final_data = { error: "Word not found or API error." };
+		final_data = { error: "Word could not be found" };
 	}
 
 	return final_data;
@@ -68,5 +68,31 @@ async function fetchAntonyms(word) {
 	};
 }
 
+async function fetchSynonyms(word) {
+	let synonyms = [];
 
-export { fetchWordData, fetchAntonyms };
+	try {
+		const response = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`);
+		const data = await response.json();
+
+		let new_synonyms = [];
+
+		for (let i = 0; i < data[0].meanings.length; i++) {
+			if (data[0].meanings[i].synonyms) {
+				new_synonyms.push(...data[0].meanings[i].synonyms);
+			}
+		}
+
+		synonyms = new_synonyms;
+	} catch (error) {
+		console.error("Error fetching synonyms:", error);
+		synonyms = [];
+	}
+	
+	return {
+		word,
+		synonyms
+	};
+}
+
+export { fetchWordData, fetchAntonyms , fetchSynonyms };
