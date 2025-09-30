@@ -1,0 +1,234 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+:root {
+    --accent: #9333ea;
+    --accent-hover: #7e22ce;
+    --accent-light: #a855f7;
+    --background: #f8f5ff;
+    --input-bg: #f3e8ff;
+    --text-main: #1e1b4b;
+    --text-muted: #6b7280;
+    --card-bg: #ffffff;
+    --border-color: #d8b4fe;
+    --tag-bg: #ede9fe;
+    --tag-hover: #ddd6fe;
+    --heading: #6b21a8;
+
+    --radius: 8px;
+    --spacing: 1.5rem;
+    --font-main: 'Inter', sans-serif;
+}
+
+html[data-theme='dark'] {
+    --accent: #c084fc;
+    --accent-hover: #a855f7;
+    --accent-light: #9333ea;
+    --background: #1e1b4b;
+    --input-bg: #312e81;
+    --text-main: #f3f4f6;
+    --text-muted: #a5b4fc;
+    --card-bg: #27204f;
+    --border-color: #7c3aed;
+    --tag-bg: #4c1d95;
+    --tag-hover: #6d28d9;
+    --heading: #e9d5ff;
+}
+
+body {
+    font-family: var(--font-main);
+    background-color: var(--background);
+    color: var(--text-main);
+    margin: 0;
+    padding: 0 1rem;
+    line-height: 1.6;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+nav {
+    background-color: var(--accent);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+nav .nav-links {
+    display: flex;
+    gap: 1.5rem;
+}
+
+nav a {
+    color: #fdf4ff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 0.4rem 1rem;
+    border-radius: var(--radius);
+    transition: background-color 0.2s ease;
+}
+
+nav a:hover,
+nav a:focus {
+    background-color: var(--accent-hover);
+    outline: none;
+}
+
+#theme-toggle {
+    background: var(--card-bg);
+    color: var(--accent);
+    border: 1px solid var(--accent-light);
+    border-radius: var(--radius);
+    padding: 0.3rem 0.7rem;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+#theme-toggle:hover {
+    background: var(--accent-light);
+    color: #fff;
+}
+
+#app {
+    max-width: 720px;
+    margin: 2rem auto;
+    background-color: var(--card-bg);
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+    transition: background-color 0.3s ease;
+}
+
+h1, h2, h3, h4 {
+    color: var(--heading);
+    margin-top: var(--spacing);
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+h1 { font-size: 2rem; }
+h2 { font-size: 1.6rem; }
+h3 { font-size: 1.3rem; }
+h4 {
+    font-size: 1.1rem;
+    font-style: italic;
+    color: var(--text-muted);
+}
+
+form {
+    display: flex;
+    gap: 0.75rem;
+    margin-bottom: var(--spacing);
+}
+
+input[type="text"] {
+    flex: 1;
+    padding: 0.6rem 0.9rem;
+    font-size: 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    background-color: var(--input-bg);
+    color: var(--text-main);
+    transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus {
+    border-color: var(--accent-light);
+    background-color: #fff;
+    outline: none;
+}
+
+input[type="submit"] {
+    background-color: var(--accent-light);
+    color: #ffffff;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+input[type="submit"]:hover,
+input[type="submit"]:focus {
+    background-color: var(--accent);
+    outline: none;
+}
+
+#results {
+    margin-top: var(--spacing);
+}
+
+.part-of-speech {
+    font-style: italic;
+    color: var(--text-muted);
+    font-weight: 500;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.definition {
+    margin-left: 1rem;
+    padding-left: 0.5rem;
+    border-left: 3px solid var(--accent-light);
+    margin-bottom: 0.75rem;
+    font-size: 1.05rem;
+    color: var(--text-main);
+}
+
+.example {
+    font-style: italic;
+    color: var(--text-muted);
+    margin-left: 1.5rem;
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+}
+
+audio {
+    margin-top: 1rem;
+    width: 100%;
+    max-width: 400px;
+    border-radius: var(--radius);
+    outline: none;
+}
+
+#word {
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: var(--heading);
+    display: inline-block;
+    margin-right: 1rem;
+}dictionaryWeb
+
+#phonetic {
+    font-style: italic;
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    display: inline-block;
+    margin-top: 0.3rem;
+}
+
+.related-word {
+    display: inline-block;
+    background-color: var(--tag-bg);
+    color: var(--accent);
+    padding: 0.4rem 0.8rem;
+    border-radius: var(--radius);
+    margin: 0.3rem 0.3rem 0 0;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+.related-word:hover {
+    background-color: var(--tag-hover);
+}
+
+p em {
+    font-style: italic;
+    color: var(--accent);
+}
+
