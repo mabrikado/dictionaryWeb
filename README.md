@@ -1,43 +1,94 @@
-# Svelte + Vite
+# 📖 Dictionary Web App
 
-This template should help get you started developing with Svelte in Vite.
+A minimal, modern, and responsive dictionary web application built with **Svelte** (not SvelteKit). This app allows users to search for words and view their **meanings**, **synonyms**, **antonyms**, **examples**, **pronunciations**, and more — all in a beautifully themed interface with light/dark mode support.
 
-## Recommended IDE Setup
+> 🟦 Hosted on Netlify as a static site — perfect for blazing-fast access and zero server-side dependencies.
 
-[VS Code](https://code.visualstudio.com/) + [Svelte](https://marketplace.visualstudio.com/items?itemName=svelte.svelte-vscode).
+---
 
-## Need an official Svelte framework?
+## 🌟 Features
 
-Check out [SvelteKit](https://github.com/sveltejs/kit#readme), which is also powered by Vite. Deploy anywhere with its serverless-first approach and adapt to various platforms, with out of the box support for TypeScript, SCSS, and Less, and easily-added support for mdsvex, GraphQL, PostCSS, Tailwind CSS, and more.
+- 🔍 **Word Lookup**  
+  Search any English word to view:
+  - Definitions (with parts of speech)
+  - Synonyms
+  - Antonyms
+  - Examples of usage
+  - Phonetics (with audio playback)
+  - Related words
 
-## Technical considerations
+- 🎧 **Audio Pronunciation**  
+  Plays audio if available for the searched word.
 
-**Why use this over SvelteKit?**
+- 🎨 **Responsive UI**  
+  Clean, mobile-friendly design with support for light & dark themes.
 
-- It brings its own routing solution which might not be preferable for some users.
-- It is first and foremost a framework that just happens to use Vite under the hood, not a Vite app.
+- ⚡ **Built with Svelte**  
+  Lightning-fast rendering and reactive UI — no virtual DOM overhead.
 
-This template contains as little as possible to get started with Vite + Svelte, while taking into account the developer experience with regards to HMR and intellisense. It demonstrates capabilities on par with the other `create-vite` templates and is a good starting point for beginners dipping their toes into a Vite + Svelte project.
+---
 
-Should you later need the extended capabilities and extensibility provided by SvelteKit, the template has been structured similarly to SvelteKit so that it is easy to migrate.
+## 📦 Built With
 
-**Why include `.vscode/extensions.json`?**
+- [Svelte](https://svelte.dev/)
+- [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)
+- [Free Dictionary API](https://dictionaryapi.dev/)
+- CSS3 (Custom variables, media queries, transitions)
 
-Other templates indirectly recommend extensions via the README, but this file allows VS Code to prompt the user to install the recommended extension upon opening the project.
+---
 
-**Why enable `checkJs` in the JS template?**
+## 🚀 Live Example
 
-It is likely that most cases of changing variable types in runtime are likely to be accidental, rather than deliberate. This provides advanced typechecking out of the box. Should you like to take advantage of the dynamically-typed nature of JavaScript, it is trivial to change the configuration.
+**Search for:** `word`
 
-**Why is HMR not preserving my local component state?**
+> Example Result:
 
-HMR state preservation comes with a number of gotchas! It has been disabled by default in both `svelte-hmr` and `@sveltejs/vite-plugin-svelte` due to its often surprising behavior. You can read the details [here](https://github.com/sveltejs/svelte-hmr/tree/master/packages/svelte-hmr#preservation-of-local-state).
+- **Word**: _word_ /wɜːd/  
+- **Part of Speech**: _noun_, _verb_, _interjection_  
+- **Definitions**:  
+  - The smallest unit of language that has meaning  
+  - A promise or oath  
+  - A short conversation  
+  - The Bible or message from God (capitalized: "Word")  
+- **Examples**:  
+  - "Mum's the word"  
+  - "I give you my word."  
+  - "Yo, that movie was epic!" / "Word?" / "Word."  
+- **Audio**: ✅ Available
 
-If you have state that's important to retain within a component, consider creating an external store which would not be replaced by HMR.
+---
 
-```js
-// store.js
-// An extremely simple external store
-import { writable } from 'svelte/store'
-export default writable(0)
+## 🛠️ Development
+
+### Prerequisites
+
+- Node.js (v16+ recommended)
+- NPM
+
+### Setup
+
+```bash
+git clone https://github.com/your-username/dictionaryWeb.git
+cd dictionaryWeb
+npm install
+npm run dev
+npm run build
+npx serve dist
 ```
+
+## License
+
+This project is open and free to use, modify, and distribute under the following conditions:
+
+- You **must provide credit** to the original author.
+- Commercial and non-commercial use is allowed.
+- You may remix, transform, or build upon the project.
+
+## Disclaimer
+
+This software is provided "as is", without warranty of any kind, express or implied.  
+The author, Sibusiso Buthelezi, is not responsible for any damages, data loss, or other issues that may arise from the use or misuse of this software.  
+
+Use at your own risk.
+
+**Author:** Sibusiso Buthelezi
