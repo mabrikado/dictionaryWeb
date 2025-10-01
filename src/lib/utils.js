@@ -95,4 +95,6 @@ async function fetchSynonyms(word) {
 	};
 }
 
+
+
 export { fetchWordData, fetchAntonyms , fetchSynonyms };

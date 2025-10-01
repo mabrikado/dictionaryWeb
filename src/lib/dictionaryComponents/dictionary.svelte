@@ -30,7 +30,7 @@
 <h1>Dictionary</h1>
 <br />
 
-<form id="lookup-form" on:submit={setWordData}>
+<form id="lookup-form" onsubmit={setWordData}>
   <input
     bind:value={name}
     name="word"

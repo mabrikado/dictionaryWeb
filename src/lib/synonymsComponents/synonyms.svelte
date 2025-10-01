@@ -16,21 +16,21 @@
     wordData = await fetchSynonyms(name);
     loading = false;
     searched = true;
-
   }
+  
 </script>
 
 <h1>Synonyms</h1>
 <br />
 
-<form id="lookup-form" on:submit={setWordData}>
+<form id="lookup-form" onsubmit={setWordData}>
   <input
     bind:value={name}
     name="word"
     id="lookup"
     type="text"
     required
-    on:input={() => searched = false}
+    oninput={() => {searched = false}}
   />
   <input name="submit" type="submit" value="Search" />
 </form>
