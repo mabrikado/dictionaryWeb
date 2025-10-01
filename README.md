@@ -72,8 +72,6 @@ git clone https://github.com/your-username/dictionaryWeb.git
 cd dictionaryWeb
 npm install
 npm run dev
-npm run build
-npx serve dist
 ```
 
 ## License
